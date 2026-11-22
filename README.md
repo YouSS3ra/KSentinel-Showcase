@@ -1,133 +1,113 @@
 # KSentinel
 ### Intelligent Fraud Detection & Risk Scoring Platform
 
-> **Every transaction tells a story. KSentinel helps identify suspicious activity through machine learning, risk assessment and explainable investigation.**
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-Spring_Boot-6DB33F?style=flat&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-FastAPI-009688?style=flat&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI-LightGBM%20%7C%20TensorFlow-orange?style=flat" />
+  <img src="https://img.shields.io/badge/Frontend-React-61DAFB?style=flat&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Streaming-Kafka-231F20?style=flat&logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/Infrastructure-Docker-2496ED?style=flat&logo=docker&logoColor=white" />
+</p>
 
-KSentinel is an academic project focused on the design of an intelligent platform for detecting potentially fraudulent financial transactions. It brings together several AI-based detection approaches and a risk-oriented workflow to support the analysis and investigation of suspicious activity.
+> **Detect suspicious transactions. Understand risk. Support investigation.**
 
-This repository is the **public project showcase**. It presents the project scope, high-level architecture, AI approaches, selected experimental results and application interfaces. It does not contain the complete source code.
+KSentinel is a fraud detection platform that analyses financial transactions using complementary machine learning and deep learning approaches. It brings together transaction analysis, risk scoring and explainability to help identify potentially fraudulent activity and give analysts useful context for investigating flagged transactions.
 
----
+<p align="center">
+  <img src="docs/images/analyst-dashboard.jpg" alt="KSentinel analyst dashboard" width="92%" />
+</p>
 
-## Project at a glance
+## What KSentinel brings together
 
-| | |
+- **Transaction monitoring** — organise transaction data for fraud analysis and review.
+- **Multi-model detection** — evaluate transaction patterns through supervised learning, anomaly detection, deep learning and graph-based learning.
+- **Risk scoring** — consolidate detection signals into a risk-oriented assessment.
+- **Explainable investigation** — provide information that helps analysts interpret suspicious results.
+- **Platform management** — offer dedicated administration, authentication and developer-facing interfaces.
+- **Traceability** — support operational visibility through audit-oriented information.
+
+## Architecture
+
+KSentinel connects transaction processing, AI detection and risk assessment in one workflow. Transaction data is prepared for analysis and evaluated by complementary detection approaches. Their outputs contribute to a consolidated risk assessment, which helps prioritise suspicious activity for further investigation. Dedicated interfaces support analysts, administrators and developers as they interact with the platform.
+
+![KSentinel architecture](docs/images/architecture-overview.png)
+
+| Component | Responsibility |
 |---|---|
-| **Project** | KSentinel — Fraud Detection & Risk Scoring |
-| **Context** | Academic project (PFA 2025–2026) |
-| **Institution** | ENIAD |
-| **Field** | Computer Engineering, Artificial Intelligence |
-| **Focus** | Fraud detection, anomaly detection, risk scoring, explainability |
+| **API & Access Management** | Manages application entry points, authentication and controlled access. |
+| **Transaction Processing** | Receives and prepares transaction data for analysis. |
+| **AI Detection Engine** | Runs the selected machine learning and deep learning approaches. |
+| **Risk Assessment** | Combines detection signals into a risk-oriented result. |
+| **Investigation & Explainability** | Presents suspicious activity and supporting explanations for review. |
+| **Audit & Reporting** | Supports traceability and operational visibility. |
 
-## The challenge
+## AI detection engine
 
-Financial transaction fraud is difficult to detect because suspicious behaviour can be rare, evolve over time and differ from one customer or account to another. A single detection technique may fail to capture every type of suspicious pattern.
+The detection engine explores four complementary approaches. Each addresses a different view of transaction behaviour.
 
-KSentinel explores a multi-approach strategy: combine supervised learning, anomaly detection, deep learning and graph-based learning, then use risk assessment to help organise the investigation of flagged transactions.
+| Approach | Models / techniques | Dataset | Detection perspective |
+|---|---|---|---|
+| **Supervised learning** | LightGBM, XGBoost | IEEE-CIS Fraud Detection | Learns patterns from labelled transaction examples. |
+| **Anomaly detection** | Autoencoder, Isolation Forest | PaySim | Identifies transactions that deviate from learned behaviour. |
+| **Deep learning** | Hybrid Autoencoder, TabNet | PaySim | Learns more complex representations of transaction data. |
+| **Graph learning** | Message Passing GNN | PaySim | Explores relationships between accounts and entities. |
 
-## Main capabilities
+### Risk assessment
 
-- **Transaction analysis** — process transaction data and identify potentially suspicious activity.
-- **Multi-model detection** — explore complementary machine learning and deep learning techniques.
-- **Risk assessment** — consolidate detection signals into a risk-oriented view.
-- **Investigation support** — expose explanations and information that can help an analyst understand a flagged transaction.
-- **Administration** — provide interfaces for platform administration.
-- **Developer access** — expose a dedicated portal for API-oriented integration and access management.
-- **Audit visibility** — support traceability through audit-oriented views.
-
-## High-level architecture
-
-The following diagram presents the main functional domains and their relationships. It is a **conceptual overview**, not a deployment diagram or a complete inventory of internal services.
-
-![KSentinel high-level architecture](docs/images/architecture-overview.png)
-
-### Functional domains
-
-| Domain | Responsibility |
-|---|---|
-| **API & Access Management** | Entry points, authentication and controlled access |
-| **Transaction Processing** | Transaction ingestion and preparation for analysis |
-| **AI Detection Engine** | Execution of complementary fraud-detection approaches |
-| **Risk Assessment** | Consolidation of model signals into a risk-oriented assessment |
-| **Investigation & Explainability** | Presentation of suspicious activity and supporting explanations |
-| **Audit & Reporting** | Traceability and operational visibility |
-
-## AI approach
-
-KSentinel explores four complementary detection approaches:
-
-### 1. Supervised machine learning
-- **Model:** LightGBM
-- **Additional model:** XGBoost
-- **Dataset used in the reported experiment:** IEEE-CIS Fraud Detection
-- **Objective:** learn patterns from labelled transaction examples.
-
-### 2. Unsupervised anomaly detection
-- **Techniques:** Autoencoder and Isolation Forest
-- **Dataset used in the reported experiment:** PaySim
-- **Objective:** identify transactions that differ from learned or expected behaviour, including patterns that are not represented by labelled fraud examples.
-
-### 3. Deep learning
-- **Approaches:** Hybrid Autoencoder and TabNet
-- **Dataset used in the reported experiment:** PaySim
-- **Objective:** learn more complex representations of transaction data.
-
-### 4. Graph neural networks
-- **Approach:** Message Passing Graph Neural Network (GNN)
-- **Dataset used in the reported experiment:** PaySim
-- **Objective:** explore relationships between accounts and entities instead of analysing each transaction only as an isolated record.
-
-### Risk-oriented decision support
-
-The project explores the consolidation of detection outputs into a final risk score. The goal is to provide a more useful investigation signal than relying on a single model output.
-
-The exact internal fusion formula, thresholds and implementation details are intentionally not disclosed in this public overview.
+Rather than relying on a single model output, KSentinel explores the consolidation of detection signals into a final risk score. This risk-oriented view is intended to support the review and prioritisation of flagged transactions.
 
 ## Application preview
 
-The following screenshots illustrate selected interfaces of the platform.
+The platform includes dedicated views for transaction analysis, model explanations, risk management and platform access.
 
-### Analyst dashboard
+<details>
+<summary><strong>Analyst dashboard</strong></summary>
+<br />
+<img src="docs/images/analyst-dashboard.jpg" alt="Analyst dashboard" width="100%" />
+The analyst interface brings transaction and monitoring information together to support the review of potentially suspicious activity.
+</details>
 
-The analyst-oriented view brings together transaction and monitoring information to support the review of potentially suspicious activity.
+<details>
+<summary><strong>AI explanation & investigation</strong></summary>
+<br />
+<img src="docs/images/ai-explanation.jpg" alt="AI explanation interface" width="100%" />
+The explanation view helps make detection outcomes easier to inspect and interpret.
+</details>
 
-![Analyst dashboard](docs/images/analyst-dashboard.jpg)
+<details>
+<summary><strong>Risk management</strong></summary>
+<br />
+<img src="docs/images/risk-management.jpg" alt="Risk management interface" width="100%" />
+The risk management interface presents the platform's risk-related management and monitoring views.
+</details>
 
-### AI explanation and investigation
+<details>
+<summary><strong>Administration</strong></summary>
+<br />
+<img src="docs/images/admin-dashboard.jpg" alt="Administration dashboard" width="100%" />
+The administration interface provides platform-level management views.
+</details>
 
-This view illustrates how the platform presents an AI-supported explanation for a suspicious transaction, helping make the detection result easier to interpret.
+<details>
+<summary><strong>Developer portal</strong></summary>
+<br />
+<img src="docs/images/developer-portal.png" alt="Developer portal" width="100%" />
+The developer portal presents the API-oriented access and integration side of the platform.
+</details>
 
-![AI explanation](docs/images/ai-explanation.jpg)
-
-### Risk management
-
-The risk-management interface presents the configuration and monitoring aspects associated with risk assessment.
-
-![Risk management](docs/images/risk-management.jpg)
-
-### Administration
-
-The administration interface provides platform-level management capabilities.
-
-![Administration dashboard](docs/images/admin-dashboard.jpg)
-
-### Developer portal
-
-The developer portal illustrates the API-oriented access and integration side of the platform.
-
-![Developer portal](docs/images/developer-portal.png)
-
-### Authentication
-
-The authentication screens illustrate the user entry flow.
-
-![Login and sign-up](docs/images/authentication.png)
+<details>
+<summary><strong>Authentication</strong></summary>
+<br />
+<img src="docs/images/authentication.png" alt="Authentication screens" width="100%" />
+The authentication screens illustrate the user access flow.
+</details>
 
 ## Experimental results
 
-The following values are the results reported during the project's experiments. They are presented as **academic experimental results**, not as a production benchmark.
+The following metrics summarise results reported during the project's experiments.
 
-| Approach | Dataset / evaluation context | Reported AUC | Reported Recall |
+| Experiment | Dataset / evaluation context | AUC | Recall |
 |---|---|---:|---:|
 | LightGBM | IEEE-CIS | 0.97 | 0.75 |
 | Unsupervised Fusion | PaySim | 0.94 | 0.71 |
@@ -135,60 +115,33 @@ The following values are the results reported during the project's experiments. 
 | GNN | PaySim | 0.99 | 0.73 |
 | Final Score Fusion | Project evaluation | 0.98 | 0.79 |
 
-**How to interpret these results**
-- The experiments use different datasets and evaluation settings. Their metrics should therefore not be treated as a direct, like-for-like model ranking.
-- PaySim is a synthetic mobile-money transaction dataset; results on it do not by themselves establish performance on real banking traffic.
-- AUC and Recall describe different aspects of model performance. They should be interpreted alongside the dataset, class distribution, decision threshold and evaluation protocol.
-- These figures reflect the reported project experiments and are not a guarantee of real-world fraud-detection performance.
+**Reading the results:** experiments were conducted on different datasets and evaluation settings, so the values should not be interpreted as a direct model ranking. PaySim is a synthetic mobile-money dataset. These results describe the project's experimental evaluations and do not establish production performance on real banking traffic.
 
 ## Technology stack
 
-The project brings together technologies across backend development, AI, frontend interfaces, data storage and infrastructure.
-
 | Area | Technologies |
 |---|---|
-| **Backend** | Java, Spring Boot, Spring Security, Python, FastAPI, Maven |
-| **Machine Learning & AI** | LightGBM, XGBoost, TensorFlow, TabNet, Autoencoders, Isolation Forest, Graph Neural Networks, SHAP |
+| **Backend & APIs** | Java, Spring Boot, Spring Security, Python, FastAPI, Maven |
+| **Machine Learning & Explainability** | LightGBM, XGBoost, TensorFlow, TabNet, Autoencoders, Isolation Forest, Graph Neural Networks, SHAP |
 | **Frontend** | React, JavaScript, Tailwind CSS, Vite |
 | **Streaming & Infrastructure** | Kafka, ZooKeeper, Docker |
-| **Databases & Caching** | MongoDB, PostgreSQL, Redis |
+| **Data & Caching** | MongoDB, PostgreSQL, Redis |
 | **Security & Observability** | JWT, OAuth 2.0, Prometheus, Grafana |
-
-## Security and disclosure
-
-This repository is intended to communicate the project's purpose and technical approach while keeping implementation details controlled.
-
-- No credentials, access tokens, private keys or environment files are included.
-- Internal service topology, sensitive configuration and detailed security implementation are not documented here.
-- The complete source code is maintained separately and is not part of this public showcase.
-
-## Possible next steps
-
-Potential directions for further development include:
-- validating the approaches on additional representative real-world datasets;
-- evaluating model robustness under changing transaction patterns;
-- improving model monitoring and the retraining workflow;
-- enriching analyst feedback and investigation workflows;
-- extending explainability and audit reporting.
-
-These are improvement directions, not claims that all capabilities are already implemented.
 
 ## Project team
 
-Developed as an academic project at **ENIAD** during the 2025–2026 academic year.
+Developed at **ENIAD** as part of the 2025–2026 academic project.
 
 - **Youssra Hamidouche**
 - **Najat Id Raho**
 - **Ouissal Jouhari**
 
-## Repository scope
-
-This repository is the public-facing **KSentinel project showcase**: an overview of the problem, architecture, AI approaches, experimental results and selected application interfaces.
-
-The complete source code is maintained in a separate private repository.
-
 ---
 
 <p align="center">
   <strong>Turning Transaction Intelligence into Real-Time Fraud Defense.</strong>
+</p>
+
+<p align="center">
+  <sub>Public project showcase · The complete source code is maintained separately.</sub>
 </p>
