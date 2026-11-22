@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/analyst-dashboard.jpg" alt="KSentinel analyst dashboard" width="94%" />
+  <img src="docs/images/accueil.jpg" alt="KSentinel accueil" width="94%" />
 </p>
 
 ---
